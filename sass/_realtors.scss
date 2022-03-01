@@ -1,0 +1,41 @@
+.realtors {
+  background-color: $color-secondary;
+  grid-column: col-start 7 / full-end;
+  padding: 3rem;
+
+  /* 
+  To center both horizontally and vertically in the realtors container
+  we can also use flex box though
+  */
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-row-gap: 2rem;
+
+  justify-items: center;
+
+  /* Grid with 1 column and two rows */
+
+  &__list {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    /* 1st column for images, 2nd column for text max-content*/
+    grid-column-gap: 2rem;
+    grid-row-gap: 5vh;
+    align-items: center;
+  }
+
+  &__img {
+    width: 7rem;
+    display: block;
+    border-radius: 50%;
+  }
+
+  &__sold {
+    text-transform: uppercase;
+    color: $color-grey-light-2;
+    margin-top: -3px;
+    font-size: 1.2rem;
+  }
+}

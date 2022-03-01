@@ -1,0 +1,52 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  /* features element here is a grid item, but now we want this grid item also to be a grid container
+  Just like flex item can easily become flex container 
+  
+  Subgrid allow a grid that is inside a grid, to snap it's tracks to the parent grid for example, align its columns with the columns of parent grid
+  */
+
+  display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  /* Auto fit simply creates as many tracks as can fit based on the width that we define
+  Width of each of the tracks should always stay between 25 rem and 1fr
+  */
+  gap: 6rem;
+  align-items: start;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  /* For the rows, we don't need to define them 
+  Many times we just want the content to define the rows in that case it's not necessary to define the rows*/
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+    /* this -1 means not the end of the grid but the end of explicit grid
+    i.e it only works with an explicit grid
+    */
+
+    /* Align-items is a property that controls the alignment of grid-items along grid cells */
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}
+
+/* 
+One big grid which could fit all of these six items, one grid item for each feature and each feature is a grid container itself, which then itself contains 3 grid items icon, heading , text.
+
+Grid allows us to nest as many grid.
+*/

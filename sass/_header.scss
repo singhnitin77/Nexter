@@ -1,0 +1,68 @@
+.header {
+  background-color: $color-grey-dark-1;
+  grid-column: full-start / col-end 6;
+  /* WHen we have a named set of grid lines, then we have to use the numbers in this case it ends after the sixth column */
+  background-image: linear-gradient(
+      rgba($color-secondary, 0.93),
+      rgba($color-secondary, 0.93)
+    ),
+    url(../img/hero.jpeg);
+  background-size: cover;
+  background-position: center;
+
+  display: grid;
+  grid-template-rows: 1fr min-content 6rem 1fr;
+  grid-template-columns: max-content;
+  grid-row-gap: 1.5rem;
+  justify-content: center;
+
+  &__logo {
+    height: 3rem;
+    justify-self: center;
+  }
+
+  &__btn {
+    align-self: start;
+    justify-self: start;
+  }
+
+  &__seenon-text {
+    display: grid;
+    /* Defining columns */
+    //grid-template-columns: 1fr min-content 1fr; //By using min-content text is breaking into 2 lines, so use max-content
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+    grid-column-gap: 1.5rem;
+    font-size: 1.6rem;
+    color: $color-grey-light-2;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background-color: currentColor;
+    }
+  }
+
+  &__seenon-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 3rem;
+    justify-items: center;
+    align-items: center;
+
+    img {
+      height: 2.5rem;
+      filter: brightness(70%);
+      max-width: 100%;
+      /* 100% is the default, anything less than 70%, image gets darker, anything above 100% the image gets lighter */
+    }
+  }
+}
+
+/* Even text can be treated as a grid item, if we set header__seenon-text to a grid container, then Seen on text will be one of the grid item, so even text can be a grid item
+Also pseudo items can also be grid item
+Use one ::before pseudo element and ::after pseudo to create the two lines 
+3 grid items, 2 lines and text i.e Seen on
+*/
